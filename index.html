@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kalkulator Tabungan</title>
+    <style>
+        body {
+            display: grid;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: rgb(152, 152, 152);
+            font-family: "Courier New", Courier, monospace;
+            }
+
+      body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #0c748b;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+  </head>
+  <body>
+    <!--<div>
+     <button onClick="sortAlphabet()">sort Alphabet</button>
+      <button onClick="sortNumeric()">sort Numeric</button>
+      <button onClick="shuffleNumeric()">shuffle Numeric</button>
+
+      <h1 id="demo"></h1>
+    </div>
+
+    <h2>Kalkulator Tabungan</h2>
+    
+
+    <form id="tabunganForm">
+      <label for="jumlahTabungan">Jumlah Tabungan Awal:</label>
+      <input type="number" id="jumlahTabungan" required />
+
+      <label for="tingkatBunga">Tingkat Bunga Tahunan (%):</label>
+      <input type="number" id="tingkatBunga" required />
+
+      <label for="periodeTabungan">Periode Tabungan (bulan):</label>
+      <input type="number" id="periodeTabungan" required />
+
+      <button type="button" onclick="hitungTabungan()">Hitung</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+      const points = [100, 1, 2, 7, 5, 90];
+      document.getElementById("demo").innerHTML = points;
+
+      function sortAlphabet() {
+        points.sort();
+        document.getElementById("demo").innerHTML = points;
+      }
+      function sortNumeric() {
+        points.sort((a, b) => a - b);
+        document.getElementById("demo").innerHTML = points;
+      }
+
+      function shuffleNumeric() {
+        points.sort(() => (Math.random() > 0.5 ? 1 : -1));
+        document.getElementById("demo").innerHTML = points;
+      }
+
+      function hitungTabungan() {
+        // Ambil nilai dari input
+        var jumlahTabungan = parseFloat(
+          document.getElementById("jumlahTabungan").value
+        );
+        var tingkatBunga = parseFloat(
+          document.getElementById("tingkatBunga").value
+        );
+        var periodeTabungan = parseFloat(
+          document.getElementById("periodeTabungan").value
+        );
+
+        // Hitung total tabungan akhir
+        var bunga =
+          ((jumlahTabungan * tingkatBunga) / 100) * (periodeTabungan / 12);
+        var totalTabungan = jumlahTabungan + bunga;
+
+        //Hitung bunga tabungan
+        var hasilbunga =
+          (jumlahTabungan * tingkatBunga * periodeTabungan) / 100;
+
+        // Tampilkan hasil
+        const resultElement = document.getElementById("result");
+        resultElement.textContent = `investasi kamu setelah ${periodeTabungan} tahun sebesar Rp. ${totalTabungan.toFixed(
+          2
+        )} dengan bunga sebesar ${hasilbunga.toFixed(2)}`;
+
+        // document.getElementById("hasilTabungan").innerHTML =
+        //   "Total Tabungan Akhir: " + totalTabungan.toFixed(2);
+
+        // document.getElementById("hasilBunga").innerHTML =
+        //   "Bunga yang didapatkan: " + hasilbunga.toFixed(2);
+      }
+    </script>
+  -->
+
+    <!--//Soal penggajian-->
+    <form id="gajiForm">
+      <label for="gajidasar">Gaji dasar karyawan:</label>
+      <input type="number" id="gajidasar" required />
+
+      <label for="uangbonus">Bonus karyawan:</label>
+      <input type="number" id="uangbonus" required />
+
+      <label for="potongankaryawan">Potongan karyawan:</label>
+      <input type="number" id="potongankaryawan" required />
+
+      <button type="button" onclick="hitungpenggajian()">Hitung</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+      function hitungpenggajian() {
+        // Ambil nilai dari input
+        var gajidasar = parseFloat(document.getElementById("gajidasar").value);
+        var uangbonus = parseFloat(document.getElementById("uangbonus").value);
+        var potongankaryawan = parseFloat(
+          document.getElementById("potongankaryawan").value
+        );
+
+        // Hitung total tabungan akhir
+        var gajibersih = gajidasar + uangbonus - potongankaryawan;
+
+        // Tampilkan hasil
+        const resultElement = document.getElementById("result");
+        resultElement.textContent =
+          "gaji bersih kamu sebesar Rp." + gajibersih.toFixed(2);
+        // document.getElementById("result").innerHTML =
+        // "Gaji Bersih Karyawan: " + gajiBersih.toFixed(2);
+
+        // document.getElementById("hasilTabungan").innerHTML =
+        //   "Total Tabungan Akhir: " + totalTabungan.toFixed(2);
+
+        // document.getElementById("hasilBunga").innerHTML =
+        //   "Bunga yang didapatkan: " + hasilbunga.toFixed(2);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <button onclick="switchCase()">Try</button> -->
+    <!-- <button onclick="factorialCase()">Try</button> -->
+    <!-- <button onclick="fetchApi()">fetch</button> -->
+
+    <div>
+      <button
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Button
+      </button>
+      <button onclick="fetchApi()">fetch</button>
+      <ul id="list" class="grid grid-cols-3 gap-3"></ul>
+    </div>
+
+    <div class="grid grid-cols-4 gap-4">
+      <div>01</div>
+      <!-- ... -->
+      <div>09</div>
+    </div>
+
+    <script>
+      //   const switchCase = () => {
+      //     let data = prompt("Masukkan data anda!").toLowerCase();
+      //     // data = data.toLowerCase();
+
+      //     console.log(data);
+
+      //     switch (data) {
+      //       case "senin":
+      //         alert("meeting");
+      //         break;
+      //       default:
+      //         alert("Libur");
+      //     }
+      //   };
+
+      //FACTORIAL
+      //   const factorialCase = () => {
+      //     function hitungFaktorial(n) {
+      //       if (n == 0) {
+      //         return 1;
+      //       } else {
+      //         return n * hitungFaktorial(n - 1);
+      //       }
+      //     }
+      //     let data = prompt("Factorial");
+      //     var hasil = hitungFaktorial(data);
+
+      //     alert(`hasil faktorial adalah: ${hasil}`);
+      //   };
+
+      // function segitiga(panjang) {
+      //   // let hasil = "";
+      //   for (let i = 1; i <= panjang; i++) {
+      //     let spasi = " ".repeat(panjang - 1);
+      //     let bintang = "*".repeat(1);
+      //     console.log(spasi + bintang);
+      //   }
+      // }
+      // segitiga(4);
+
+      // function segitigakiri(panjang) {
+      //   for (let i = panjang; i >= 1; i--) {
+      //     let spasi = " ".repeat(panjang - 1);
+      //     let bintang = "*".repeat(1);
+      //     console.log(spasi + bintang);
+      //   }
+      // }
+
+      // segitigakiri(4);
+
+      // function mahasiswa(nama, jurusan) {
+      //   this.nama = nama;
+      //   this.jurusan = jurusan;
+      //   this.sapa = function () {
+      //     console.log(
+      //       "Halo, nama saya " + this.nama + "dari jurusan " + this.jurusan
+      //     );
+      //   };
+      // }
+
+      // var mahasiswa1 = new mahasiswa("Alice", " Informatika");
+      // var mahasiswa2 = new mahasiswa("Bob", " Ekonomi");
+
+      // mahasiswa1.sapa();
+      // mahasiswa2.sapa();
+
+      // function fetchApi() {
+      //   const list = document.getElementById("list");
+      //   list.innerHTML = "";
+
+      //   fetch("https://jsonplaceholder.typicode.com/todos")
+      //     .then((data) => data.json())
+      //     .then((data) => {
+      //       data.forEach((element) => {
+      //         list.innerHTML += `
+      //         <li>${element.title}</li>
+      //         `;
+      //         // console.log(element.completed);
+      //       });
+      //       console.log(data[20]);
+      //     });
+      // }
+      // fetchApi();
+
+      // Tugas manajemen perbankan
+
+      // function addCustomer(name, accountNumber) {
+      //   let newCustoomer = {
+      //     name: name,
+      //     accountNumber: accountNumber,
+      //     balance: 0,
+      //     transactionHistory: [],
+      //   };
+      //   customers.push(newCustomer);
+      // }
+
+      // function deposit(accountNumber, amount) {}
+      // function withdraw(accountNumber, amount) {}
+
+      // function checkBalance(accountNumber) {}
+
+      // function viewTransactionHistory(accountNumber) {}
+
+      // function transactionHandler(type, accountNumber, amount) {
+      //   switch (type) {
+      //     case "deposit":
+      //       deposit(accountNumber, amount);
+      //       break;
+      //     case "withdraw":
+      //       withdraw(accountNumber, amount);
+      //       break;
+      //     default:
+      //       console.log("Invalid trasaction type");
+      //   }
+      // }
+
+      // function recurringTransaction(accountNumber, amount, frequency) {}
+
+      //tugas balance customer
+      let customers = []; // This array will hold customer objects
+
+      function addCustomer(name, accountNumber) {
+        let newCustomer = {
+          name: name,
+          accountNumber: accountNumber,
+          balance: 0,
+          transactionHistory: [],
+        };
+        customers.push(newCustomer);
+      }
+
+      function findCustomerByAccountNumber(accountNumber) {
+        return customers.find(
+          (customer) => customer.accountNumber === accountNumber
+        );
+      }
+
+      function deposit(accountNumber, amount) {
+        let customer = findCustomerByAccountNumber(accountNumber);
+        if (customer) {
+          customer.balance += amount;
+          customer.transactionHistory.push({
+            date: Date.now(),
+            type: "deposit",
+            amount: amount,
+          });
+          console.log(
+            `Deposit of ${amount} to account number ${accountNumber} was successful.`
+          );
+        } else {
+          console.log(
+            `Customer with account number ${accountNumber} not found.`
+          );
+        }
+      }
+
+      function withdraw(accountNumber, amount) {
+        let customer = findCustomerByAccountNumber(accountNumber);
+        if (customer) {
+          if (customer.balance >= amount) {
+            customer.balance -= amount;
+            customer.transactionHistory.push({
+              type: "withdrawal",
+              amount: amount,
+            });
+            console.log(
+              `Withdrawal of ${amount} from account number ${accountNumber} was successful.`
+            );
+          } else {
+            console.log(
+              `Insufficient balance for withdrawal from account number ${accountNumber}.`
+            );
+          }
+        } else {
+          console.log(
+            `Customer with account number ${accountNumber} not found.`
+          );
+        }
+      }
+
+      addCustomer("John Doe", "123456789");
+      deposit("123456789", 200);
+      withdraw("123456789", 300);
+    </script>
+  </body>
+</html>
